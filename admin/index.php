@@ -125,7 +125,10 @@
 
 				$discountEndDate=$discountEndDateDay.'.'.$discountEndDateMonth.'.'.$discountEndDateYear;
 				$discountEndTime=$discountEndTimeHours.':'.$discountEndTimeMinutes;
-
+				if($parsed['mail'] !== $mail){
+					mail($parsed['mail'], 'Уведомление от baellerry-it!', "E-mail приема заказов был изменен на: $mail", "Content-type: text/plain; charset=utf-8");
+					echo "<br/>На почту <b>".$parsed['mail']."</b> было отправлено уведомление о смене E-mail.";
+				}
 				$arr=array(
 					'mail' => $mail,
 					'original-price' => $originalPrice,
@@ -140,11 +143,13 @@
 				$fp = fopen(dirname($_SERVER['SCRIPT_FILENAME']).'/../scripts/config.json', 'w');
 				fwrite($fp, $newJSON);
 				fclose($fp);
-				$fp1 = fopen(dirname($_SERVER['SCRIPT_FILENAME']).'/password.txt', 'w');
-				fwrite($fp1, md5($newPassword));
-				fclose($fp1);
-				mail($_POST['mail'], 'Уведомление от baellerry-it!', "Пароль аккаунта админ-панели сменен: $newPassword", "Content-type: text/plain; charset=utf-8");
-				echo "<br/>На почту <b>".$_POST['mail']."</b> было отправлено уведомление о смене пароля.";
+				if($f !== md5($newPassword)){
+					$fp1 = fopen(dirname($_SERVER['SCRIPT_FILENAME']).'/password.txt', 'w');
+					fwrite($fp1, md5($newPassword));
+					fclose($fp1);
+					mail($_POST['mail'], 'Уведомление от baellerry-it!', "Пароль аккаунта админ-панели сменен: $newPassword", "Content-type: text/plain; charset=utf-8");
+					echo "<br/>На почту <b>".$_POST['mail']."</b> было отправлено уведомление о смене пароля.";
+				}
 			}
 		?>
 		</div>
