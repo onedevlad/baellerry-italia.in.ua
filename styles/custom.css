@@ -4799,10 +4799,10 @@ body {
   font-family: Roboto;
   height: 100% !important;
 }
-.container-fluid {
+.container-fluid[id^='screen-'] {
   background: #262527;
 }
-.container-fluid .container {
+.container-fluid[id^='screen-'] .container {
   max-width: 1050px;
 }
 #screen-1 {
@@ -4853,9 +4853,11 @@ body {
 #screen-1 .order-box-wrapper .order-box {
   -webkit-border-radius: 7px;
   border-radius: 7px;
+  padding: 15px;
   background: #e6e6e6;
 }
 #screen-1 .order-box-wrapper .order-box h3 {
+  margin-top: 0;
   text-align: center;
   color: #262527;
 }
@@ -4893,26 +4895,26 @@ body {
 }
 #screen-1 .order-box-wrapper .order-box .order {
   display: block;
-  margin: 7% auto 4% auto;
+  margin: 7% auto 0 auto;
 }
 @media (max-width: 768px) {
-  .header {
+  #screen-1 .header {
     margin-top: 20% !important;
-    margin-bottom: 30% !important;
+    margin-bottom: 10% !important;
   }
-  .header .brand-primary {
+  #screen-1 .header .brand-primary {
     font-size: 3em !important;
   }
-  .desc-box {
-    margin-top: 30% !important;
-    margin-bottom: 30% !important;
+  #screen-1 .desc-box {
+    margin-top: 10% !important;
+    margin-bottom: 10% !important;
   }
-  .order-box h3 {
+  #screen-1 .order-box h3 {
     text-align: center;
     font-size: 1.25em;
   }
-  .order-box .discount-timer .left,
-  .order-box .discount-timer .right {
+  #screen-1 .order-box .discount-timer .left,
+  #screen-1 .order-box .discount-timer .right {
     font-size: 2em !important;
   }
 }
@@ -4973,6 +4975,7 @@ body {
 @media (max-width: 991px) {
   .header {
     margin-top: 20% !important;
+    margin-bottom: 0 !important;
   }
   .desc-wrapper {
     margin-top: 20% !important;
@@ -5008,6 +5011,7 @@ body {
   text-transform: uppercase;
 }
 #screen-3 .row .purse-desc-wrapper .heading {
+  line-height: 1.5em;
   margin: 7% 0 2% 0;
   font-family: Roboto-Medium;
   display: inline-block;
@@ -5108,7 +5112,7 @@ body {
     text-align: center !important;
   }
   .benefit .container-fluid h4 {
-    font-size: 0.5em !important;
+    font-size: 0.75em !important;
   }
 }
 #screen-7 {
@@ -5135,12 +5139,17 @@ body {
   font-style: italic;
   font-size: 1.25em;
 }
+@media (max-width: 992px) {
+  .col-md-9 {
+    text-align: center;
+  }
+}
 #screen-8 {
   background: #e6e6e6;
 }
 #screen-8 h1 {
   font-family: Roboto-Medium;
-  margin: 5% 0;
+  margin: 5% 0 0 0;
   text-align: center;
 }
 #screen-8 .work-description {
@@ -5176,12 +5185,20 @@ body {
 #screen-8 .delievery-desc-2 {
   margin-top: 5%;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .work-description div {
     margin-top: 10%;
   }
   .work-description div img {
-    width: 20% !important;
+    width: 10% !important;
+  }
+  .delievery-desc h3 {
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  h1 {
+    margin-bottom: 5% !important;
   }
 }
 #screen-9 {
@@ -5194,7 +5211,7 @@ body {
   margin-top: 5%;
 }
 #screen-9 .desc-box {
-  margin-top: 10%;
+  margin-top: 5%;
   font-size: 1em;
 }
 #screen-9 .desc-box .discount-timer {
@@ -5215,21 +5232,23 @@ body {
   font-size: 6em;
 }
 #screen-9 .desc-box .discount-timer .col-xs-3 .left {
+  text-align: right;
   float: left;
 }
 #screen-9 .desc-box .discount-timer .col-xs-3 .right {
+  text-align: left;
   float: right;
 }
 #screen-9 .form-box {
   padding-top: 2%;
-  margin-top: 10%;
+  margin-top: 5%;
   background: #e6e6e6;
   color: #333;
   -webkit-border-radius: 7px;
   border-radius: 7px;
 }
 #screen-9 .form-box table {
-  width: 100% !important;
+  margin: 0 auto;
 }
 #screen-9 .form-box table td {
   padding: 0.5em;
@@ -5243,21 +5262,9 @@ body {
   margin-top: 7%;
   margin-bottom: 7%;
 }
-@media (max-width: 991px) {
-  .discount-timer .col-xs-3 {
-    padding: 0 10px !important;
-  }
-  .discount-timer .col-xs-3 .left,
-  .discount-timer .col-xs-3 .right {
-    font-size: 3em !important;
-  }
-}
-@media (max-width: 991px) and (min-width: 768px) {
-  .discount-timer .col-xs-3 {
-    padding: 0 10px !important;
-  }
-  .discount-timer .col-xs-3 .left,
-  .discount-timer .col-xs-3 .right {
+@media (max-width: 768px) {
+  .discount-timer .left,
+  .discount-timer .right {
     font-size: 4em !important;
   }
 }

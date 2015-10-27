@@ -49,7 +49,7 @@ body
 	position relative
 	font-family Roboto
 	height 100% !important
-.container-fluid
+.container-fluid[id^='screen-']
 	background d-gray
 	.container
 		max-width 1050px
@@ -89,8 +89,10 @@ body
 				width 70%
 		.order-box
 			border-radius 7px
+			padding 15px
 			background d-white
 			h3
+				margin-top 0
 				text-align center
 				color d-gray
 			.original-price
@@ -121,24 +123,25 @@ body
 						padding 0.3em
 			.order
 				display block
-				margin 7% auto 4% auto
+				margin 7% auto 0 auto
 @media(max-width $screen-sm-min)
-	.header
-		margin-top 20% !important
-		margin-bottom 30% !important
-		.brand-primary
-			font-size 3em !important
-	.desc-box
-		margin-top 30% !important
-		margin-bottom 30% !important
-	.order-box
-		h3
-			text-align center
-			font-size 1.25em
-		.discount-timer
-			.left
-			.right
-				font-size 2em !important
+	#screen-1
+		.header
+			margin-top 20% !important
+			margin-bottom 10% !important
+			.brand-primary
+				font-size 3em !important
+		.desc-box
+			margin-top 10% !important
+			margin-bottom 10% !important
+		.order-box
+			h3
+				text-align center
+				font-size 1.25em
+			.discount-timer
+				.left
+				.right
+					font-size 2em !important
 @media(max-width $screen-sm-max) and (min-width $screen-sm-min)
 	.order-box
 		margin-top 10% !important
@@ -181,6 +184,7 @@ body
 @media(max-width $screen-sm-max)
 	.header
 		margin-top 20% !important
+		margin-bottom 0 !important
 	.desc-wrapper
 		margin-top 20% !important
 		img
@@ -208,6 +212,7 @@ body
 				margin-top 5%
 				text-transform uppercase
 			.heading
+				line-height 1.5em
 				margin 7% 0 2% 0
 				font-family Roboto-Medium
 				display inline-block
@@ -289,7 +294,7 @@ body
 		.container-fluid
 			text-align center !important
 			h4
-				font-size 0.5em !important
+				font-size 0.75em !important
 #screen-7
 	color white
 	h1
@@ -308,11 +313,14 @@ body
 				margin-top 2%
 				font-style italic
 				font-size 1.25em
+@media(max-width $screen-md)
+	.col-md-9
+		text-align center
 #screen-8
 	background d-white
 	h1
 		font-family Roboto-Medium
-		margin 5% 0
+		margin 5% 0 0 0
 		text-align center
 	.work-description
 		margin-top 5%
@@ -340,12 +348,16 @@ body
 				font-size 1.25em
 	.delievery-desc-2
 		margin-top 5%
-@media(max-width $grid-float-breakpoint)
-	.work-description
-		div
-			margin-top 10%
-			img
-				width 20% !important
+@media(max-width $screen-md)
+	.work-description div
+		margin-top 10%
+		img
+			width 10% !important
+	.delievery-desc h3
+			text-align center
+@media(min-width $screen-md)
+	h1
+		margin-bottom 5% !important
 #screen-9
 	padding-bottom 10%
 	color white
@@ -354,7 +366,7 @@ body
 		font-family Roboto-Medium
 		margin-top 5%
 	.desc-box
-		margin-top 10%
+		margin-top 5%
 		font-size 1em
 		.discount-timer
 			margin-top 5%
@@ -370,17 +382,19 @@ body
 					text-align center
 					font-size 6em
 				.left
+					text-align right
 					float left
 				.right
+					text-align left
 					float right
 	.form-box
 		padding-top 2%
-		margin-top 10%
+		margin-top 5%
 		background d-white
 		color gray
 		border-radius 7px
 		table
-			width 100% !important
+			margin 0 auto
 			td
 				padding 0.5em
 				input
@@ -390,17 +404,8 @@ body
 		button
 			margin-top 7%
 			margin-bottom 7%
-@media(max-width $screen-sm-max)
+@media(max-width $screen-sm)
 	.discount-timer
-		.col-xs-3
-			padding 0 10px !important
-			.left
-			.right
-				font-size 3em !important
-@media(max-width $screen-sm-max) and (min-width $screen-sm-min)
-	.discount-timer
-		.col-xs-3
-			padding 0 10px !important
-			.left
-			.right
-				font-size 4em !important
+		.left
+		.right
+			font-size 4em !important
