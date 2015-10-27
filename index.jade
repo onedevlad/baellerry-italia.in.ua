@@ -1,0 +1,330 @@
+<?php $f=file_get_contents(dirname($_SERVER['SCRIPT_FILENAME']).'/scripts/config.json'); settype($f, 'string'); $parsed=json_decode($f, true);?>
+<?php if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['phone'])){mail($parsed['mail'], 'Новый заказ!', $_POST['surname'].' '.$_POST['name'].' (.'.$_POST['phone'].') заказал(а) портмоне!', "Content-type: text/plain; charset=utf-8");}?><!DOCTYPE html>
+doctype
+html
+	head
+		title Baellerry Italia
+		script(src='scripts/jquery.js')
+		script(src='scripts/mask.js')
+		script(src='styles/bootstrap/js/collapse.js')
+		script(src='styles/bootstrap/js/scrollspy.js')
+		script(src='styles/bootstrap/js/modals.js')
+		script(defer, src='scripts/custom.js')
+		script
+			| var originalPrice='<?php echo $parsed["original-price"];?>';
+			| var discount='<?php echo $parsed["discount"];?>';
+			| var newPrice='<?php echo $parsed["new-price"];?>';
+			| var discountEndDate='<?php echo $parsed["discount-end"]["date"];?>';
+			| var discountEndTime='<?php echo $parsed["discount-end"]["time"];?>';
+
+		link(rel="stylesheet", href="styles/custom.css")
+
+		title Baellerry Italia
+
+		meta(charset="UTF-8")
+		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+	body(data-spy="scroll", data-target="#navbar-collapse-btn", data-offset='50')
+		nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+			.container
+				.navbar-header
+					button.navbar-toggle(type='button', data-target='#navbar-collapse-btn', data-toggle='collapse')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') Baellerry Italia
+				#navbar-collapse-btn.collapse.navbar-collapse
+					ul#nav.nav.navbar-nav.navbar-right
+						li.active
+							a(href='#screen-1') Начало
+						li
+							a(href='#screen-2') Описание
+						li
+							a(href='#screen-3') Преимущества
+						li
+							a(href='#screen-4') Характеристики
+						li
+							a(href='#screen-5') Галерея
+						li
+							a(href='#screen-6') Магазин
+						li
+							a(href='#screen-7') Отзывы
+						li
+							a(href='#screen-8') Заказать
+		.container-fluid#screen-1
+			.container
+				.row.header
+					.col-md-6.brand
+						h3.brand-secondary Портмоне-клатч ручной работы
+						h1.brand-primary Baellerry Italia
+					.col-md-3.col-md-offset-3.hidden-sm.hidden-xs.info
+						h3 Закажите звонок!
+						button.order Заказать!
+				.row.order-box-wrapper
+					.col-md-7.desc-box
+						img(src='images/purse-5.png').sm-hidden
+						h3 Документы, права, паспорт, деньги, кредитки
+						span ...и не только - все это спокойно умещается в этом стильном практичном мужском портмоне. Качество и хороший функционал никого не оставит равнодушным!
+					.col-md-4.col-md-push-1.order-box
+						h3 Успейте заказать по акции!
+						span.original-price
+							span.original-price-value
+							| грн
+						span.new-price
+							| Новая цена: 
+							span.new-price-value
+							| грн
+						hr
+						form#special-form(method='POST')
+							table
+								tr
+									td.left
+										span Ваше имя:
+									td.right
+										input#special-name(name='name', size='18')
+								tr
+									td.left
+										span Ваша фамилия:
+									td.right
+										input#special-surname(name='surname', size='18')
+								tr
+									td.left
+										span Номер телефона:
+									td.right
+										input#special-phone(name='phone', size='18')
+						button.order#special-order Заказать!
+		.container-fluid#screen-2
+			.container
+				.row.header
+					.col-lg-12.brand
+						h1.brand-primary Baelerry Italia
+						h3.brand-secondary Прекрасный подарок для ценителя хороших вещей
+				.row.descs
+					.col-md-4.desc-wrapper
+						img(src='images/purse-1.jpg')
+						h4 Непревзойденное качество
+						span 100% натуральная кожа и кропотливая ручная работа мастеров, создавших этот шедевр, позволили миру увидеть элегантные и максимально надежные портмоне тончайшей выделки. Все они рассчитаны на длительное ежедневное использование на протяжении многих лет.
+					.col-md-4.desc-wrapper
+						img(src='images/purse-2.jpg')
+						h4 Практичность и удобство
+						span Портмоне Baellerry Italia отличается надежностью каждого из элементов и приятно на ощупь, что даст вам чувство комфорта на протяжении всего времени его эксплуатации. Комфорт при использовании портмоне возникает благодаря качественному материалу и наличию в нем достаточного количества полезных отделений. Всеми этими качествами обладает портмоне ручной работы Baellerry Italia.
+					.col-md-4.desc-wrapper
+						img(src='images/purse-3.jpg')
+						h4 Итальянская изысканность
+						span При создании этого портмоне дизайнеры учитывали все современные тренды (цвета и тиснение), а также классические и проверенные временем элементы дизайна высококлассного портмоне (форма, размер, крой).
+				.row.order-btn
+					.col.lg-12
+						button.order Заказать сейчас!
+		.container-fluid#screen-3
+			.row
+				.col-sm-5.purse-img-wrapper
+					img.purse-img(src='images/purse-6.jpg')
+				.col-sm-7.purse-desc-wrapper
+					h3 У ВАС ПОСТОЯННО НАБИТЫЕ КАРМАНЫ?
+						br
+						| НИЧЕГО НЕ ПОМЕЩАЕТСЯ?
+					span ВЫ ПОСТОЯННО НАБИВАЕТЕ КАРМАНЫ КЛЮЧАМИ ОТ ДОМА, МАШИНЫ, ДЕНЬГАМИ, БАНКОВСКИМИ КАРТОЧКАМИ, ДОКУМЕНТАМИ И ЕЩЕ И МОБИЛЬНЫМ ТЕЛЕФОНОМ?
+					span НЕ УДОБНО ИСКАТЬ НУЖНЫЕ ВЕЩИ ПО КАРМАНАХ, С КОТОРЫХ ВСЕ ТОРЧИТ И ВЫ ТЕРЯЕТЕСЬ В ОТВЕТСТВЕННЫЕ МИНУТЫ? 
+					span ЭТО ВАС РАЗДРАЖАЕТ И ВЫ ХОТИТЕ ИЗБАВИТЬСЯ ОТ ЭТОЙ ПРОБЛЕМЫ?
+					h4.heading У НАС ЕСТЬ ИДЕАЛЬНОЕ РЕШЕНИЕ ДЛЯ ВАС!
+					span СТИЛЬНЫЙ КОЖАНЫЙ КЛАТЧ ПРИДАСТ ВАМ УВЕРЕННОСТИ, ПОДЧЕРКНЕТ ВАШ ДЕЛОВОЙ СТИЛЬ ПРИ ВСТРЕЧАХ ИЛИ НА РАБОТЕ, ПОЗВОЛИТ ВАМ ЧУВСТВОВАТЬ СЕБЯ КОМФОРТНО. ПУСТЬ ВСЕ НЕОБХОДИМЫЕ ВЕЩИ БУДУТ В ПОРЯДКЕ И ВСЕГДА ПОД РУКОЙ.
+			.row.divider
+				.col-lg-12
+					.left
+					.inner
+					.right
+		.container-fluid#screen-4(data-spy='scroll')
+			.row
+				.col-xs-12
+					h1 Характеристики портмоне
+					.video-wrapper
+						video#video(preload='preload', controls='controls')
+							source(src='videos/desc.mp4')
+							source(src='videos/desc.ogv')
+			.row.divider
+				.col-lg-12
+					.left
+					.inner
+					.right
+		.container-fluid#screen-5
+			h1 Галерея
+			.container
+				.row
+					ul.row
+						li.col-xs-3
+							img(src='images/gallery/1.jpg')
+						li.col-xs-3
+							img(src='images/gallery/2.jpg')
+						li.col-xs-3
+							img(src='images/gallery/3.jpg')
+						li.col-xs-3
+							img(src='images/gallery/4.jpg')
+					ul.row
+						li.col-xs-3
+							img(src='images/gallery/5.jpg')
+						li.col-xs-3
+							img(src='images/gallery/6.jpg')
+						li.col-xs-3
+							img(src='images/gallery/7.jpg')
+						li.col-xs-3
+							img(src='images/gallery/8.jpg')
+			.row.divider
+				.col-lg-12
+					.left
+					.inner
+					.right
+			#gallery-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+				.modal-dialog
+					.modal-content
+						.modal-header
+							.container-fluid
+									h4 Baellerry Italia
+									button.btn.btn-danger.close.pull-right(type='button', data-dismiss='modal') &times;
+						.modal-body
+		.container-fluid#screen-6
+			h1 Преимущества нашего магазина
+			.container
+				.row
+					.col-xs-6.benefit
+						.container-fluid
+							.row
+								.col-sm-2
+									img(src='images/ok.png')
+								.col-sm-10
+									h4 У НАС ТОЛЬКО КАЧЕСТВЕННЫЙ ТОВАР
+					.col-xs-6.benefit
+						.container-fluid
+							.row
+								.col-sm-2
+									img(src='images/ok.png')
+								.col-sm-10
+									h4 МЫ РАБОТАЕМ НАПРЯМУЮ С ПРОИЗВОДИТЕЛЕМ
+				.row.second-row
+					.col-xs-6.benefit
+						.container-fluid
+							.row
+								.col-sm-2
+									img(src='images/ok.png')
+								.col-sm-10
+									h4 НИЗКАЯ ЦЕНА
+					.col-xs-6.benefit
+						.container-fluid
+							.row
+								.col-sm-2
+									img(src='images/ok.png')
+								.col-sm-10
+									h4 НАМ ДОВЕРЯЮТ ПОКУПАТЕЛИ
+			.row.divider
+				.col-lg-12
+					.left
+					.inner
+					.right
+		.container-fluid#screen-7
+			h1 Отзывы
+			.container
+				.row.feedback
+					.col-md-3
+						img(src='images/feedbacks/1.png')
+					.col-md-9
+						h4 Николай, г. Харьков
+						span "Уже пол года ползуюсь этим клатчем. Очень доволен, что купил. Люблю что-то новенькое:) Качество просто отличное! Постоянно ношу з собой. Он действительно практичен и вместительный."
+				.row.feedback
+					.col-md-3
+						img(src='images/feedbacks/2.png')
+					.col-md-9
+						h4 Артем, г. Киев
+						span "Этот клатч мне попосоветовал друг. Он покупал еще до акции и намного дороже. А мне повезло успеть купить по акции. Он мне очень нравится, помещается все что нужно и дизайн классный:) СПАСИБО!"
+				.row.feedback
+					.col-md-3
+						img(src='images/feedbacks/3.png')
+					.col-md-9
+						h4 Евгений, г. Херсон
+						span "Очень нравиться этот клатч, подходит к любой одежде, стильный. Покупал его другу в подарок и еще себе один взял. Так мне еще и скидку сделали 100 грн. Обслуживание на высшем уровне. Только заказал, сразу получил звонок для подтверждения заказа и через пол часа посылка была отправленна. Качество просто супер!"
+				.row.feedback
+					.col-md-3
+						img(src='images/feedbacks/4.png')
+					.col-md-9
+						h4 Андрей, г. Днепропетровск
+						span "Ранее не пользовался клатчами и носил все в карманах. Но теперь увидел как это удобно все держать в одном клатче. Он очень вместительный, ношу в нем и телефон и документы и ключи, отлично лежит в руке. Взял себе черный. Все спрашивают где покупал, хотят себе такой же. 
+							br
+							| PS: Если кто-то сомневаеться, то скажу от себя, что не стоит - ЭТО СУПЕР ВЕЩЬ!"
+			.row.divider
+				.col-lg-12
+					.left
+					.inner
+					.right
+		.container-fluid#screen-8
+			h1 КАК МЫ РАБОТАЕМ
+			.container
+				.row.work-description
+					.col-md-3
+						img(src="images/form.png", alt="")
+						span Вы заполняете форму заказа
+					.col-md-3
+						img(src="images/reply.png", alt="")
+						span Мы свяжемся с вами и уточним детали
+					.col-md-3
+						img(src="images/deliever.png", alt="")
+						span Мы отправим товар наложеным платежом
+					.col-md-3
+						img(src="images/like.png", alt="")
+						span Вы проверяете, получаете и оплачиваете
+				.row.delievery-desc
+					.col-sm-3
+						img(src='images/np.png')
+					.col-sm-9
+						h3 Оплата при получении - Нова Пошта
+						span Мы вам доверяем и не требуем с вас предоплаты. Мы уважаем ваше время, и поэтому все заказы отправляем только экспресс доставкой. Вы можете забрать и оплатить на почте в любое удобное для вас время. Доставка займет 1-2 рабочих дня.
+				.row.delievery-desc.delievery-desc-2
+					.col-sm-3
+						img(src='images/100percent.png')
+					.col-sm-9
+						h3 100% Гарантия качества
+						span Мы заботимся о своей репутации, довольные клиенты для нас - на первом месте! Мы сгарантируем качество товара и безопасность покупки. Мы проверяем каждый товар перед отправкой, но в случае если Вы обнаружите какой-то дефект, Вам достаточно связаться с нашими менеджерами. Мы с радостью примем Ваш возврат!
+				.row.divider
+					.col-lg-12
+						.left
+						.inner
+						.right
+		.container-fluid#screen-9
+			h1 Закажите портмоне со скидкой
+			.container
+				.row
+					.col-md-6.desc-box
+						h3 Успейте заказать! До окончания акции осталось:
+						.container-fluid.discount-timer
+							.col-xs-3.days
+								span.left 0
+								span.right 0
+								span.title Дней
+							.col-xs-3.hours
+								span.left 0
+								span.right 0
+								span.title Часов
+							.col-xs-3.minutes
+								span.left 0
+								span.right 0
+								span.title Минут
+							.col-xs-3.seconds
+								span.left 0
+								span.right 0
+								span.title Секунд
+					.col-md-5.col-md-offset-1.form-box
+						form#form(method='post')
+							table
+								tr
+									td.left
+										span Ваше имя:
+									td.right
+										input#name(name='name', size='18')
+								tr
+									td.left
+										span Ваша фамилия:
+									td.right
+										input#surname(name='surname', size='18')
+								tr
+									td.left
+										span Номер телефона:
+									td.right
+										input#phone(name='phone', size='18')
+						button#order.order Отправить заказ
