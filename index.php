@@ -1,6 +1,6 @@
 
 <?php $f=file_get_contents(dirname($_SERVER['SCRIPT_FILENAME']).'/scripts/config.json'); settype($f, 'string'); $parsed=json_decode($f, true);?>
-<?php if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['phone'])){mail($parsed['mail'], 'Новый заказ!', $_POST['surname'].' '.$_POST['name'].' (.'.$_POST['phone'].') заказал(а) портмоне!', "Content-type: text/plain; charset=utf-8");}?><!DOCTYPE html><!DOCTYPE html>
+<?php if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['phone'])){mail($parsed['mail'], 'Новый заказ!', $_POST['surname'].' '.$_POST['name'].' ('.$_POST['phone'].') заказал(а) портмоне!', "Content-type: text/plain; charset=utf-8;");}?><!DOCTYPE html><!DOCTYPE html>
 <html>
   <head>
     <title>Baellerry Italia</title>
