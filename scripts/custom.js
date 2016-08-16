@@ -1,10 +1,11 @@
+var now = new Date();
 $(document).ready(function(){//Prices module
-	if(originalPrice.slice(0, 2) === '<?') originalPrice=900;
-	if(discount.slice(0, 2) === '<?') discount=50;
-	if(newPrice.slice(0, 2) === '<?') newPrice=499;
-	if(discountEndDate.slice(0, 2) === "<?") discountEndDate=now.getDate()+'.'+(now.getMonth()+1)+'.'+now.getFullYear();
-	if(discountEndTime.slice(0, 2) === "<?") discountEndTime='00:00';
-
+	if(originalPrice[0] === '<') originalPrice=900;
+	if(discount[0] === '<') discount=50;
+	if(newPrice[0] === '<') newPrice=499;
+	if(discountEndDate[0] === "<") discountEndDate=now.getDate()+'.'+(now.getMonth()+1)+'.'+now.getFullYear();
+	if(discountEndTime[0] === "<") discountEndTime='00:00';
+	console.log(originalPrice)
 	if(newPrice.length === 0) newPrice=(parseFloat(originalPrice)/100)*parseFloat(discount);
 
 	$('.original-price-value').html(originalPrice);
@@ -52,7 +53,7 @@ $(document).ready(function(){//Order module
 
 function discountTimer(){
 	$timer=$('.discount-timer');
-	var now=new Date();
+	now=new Date();
 	var end={
 		'date': discountEndDate,
 		'time': discountEndTime,
