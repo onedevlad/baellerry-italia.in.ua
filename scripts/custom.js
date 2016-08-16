@@ -5,7 +5,6 @@ $(document).ready(function(){//Prices module
 	if(newPrice[0] === '<') newPrice=499;
 	if(discountEndDate[0] === "<") discountEndDate=now.getDate()+'.'+(now.getMonth()+1)+'.'+now.getFullYear();
 	if(discountEndTime[0] === "<") discountEndTime='00:00';
-	console.log(originalPrice)
 	if(newPrice.length === 0) newPrice=(parseFloat(originalPrice)/100)*parseFloat(discount);
 
 	$('.original-price-value').html(originalPrice);
